@@ -1,0 +1,81 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  font-family: Inter;
+}
+
+.nav{
+  height: 55px;
+  background: #F55A5A;
+  color: white;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.card{
+  height: 170px;
+  width: 80%;
+  display: flex;
+  margin: 30px auto;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.349);
+}
+
+.card--img{
+  width: 130px;
+  height: 170px;
+  border-radius: 5px;
+  margin-right: 25px;
+}
+
+.card--info{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card--info--location{
+  display: flex;
+  gap: 15px;
+}
+
+.card--info--location i{
+  color: #F55A5A;
+  margin-right: 5px;
+}
+
+.card--info--location--country{
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: .8rem;
+  line-height: 12.4px;
+}
+.card--info--location--maps{
+  color: gray;
+  text-decoration: underline;
+  font-size: .8rem;
+  line-height: 12px;
+}
+
+.card--info--title{
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 30px;
+  margin-bottom: 7px;
+}
+
+.card--info--dates{
+  font-weight: 700;
+  font-size: .8rem;
+  line-height: 12px;
+}
+
+.card--info--description{
+  font-size: .8rem;
+  line-height: 15px;
+}
