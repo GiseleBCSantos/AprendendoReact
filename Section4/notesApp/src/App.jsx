@@ -11,7 +11,11 @@ function App() {
       () => JSON.parse(localStorage.getItem('notes'))
          || [])
 
-  const [currentNoteId, setCurrentNoteId] = useState(notes[0] && notes[0].id || '')
+  const [currentNoteId, setCurrentNoteId] = useState(notes[0]?.id || '')
+
+  const currentNote = notes.find(note => {
+    return note.id === currentNoteId
+  }) || notes[0]
 
 
   useEffect(() => {
@@ -45,11 +49,6 @@ function App() {
 
   }
 
-  function findCurrentNote(){
-    return notes.find(note => {
-      return note.id === currentNoteId
-    }) || notes[0]
-  }
 
   function deleteNote(event, noteId){
     event.stopPropagation()
@@ -68,7 +67,7 @@ function App() {
           >
             <Sidebar 
               notes={notes}
-              currentNote={findCurrentNote()}
+              currentNote={currentNote}
               setCurrentNoteId={setCurrentNoteId}
               newNote={createNewNote}
               deleteNote={deleteNote}
@@ -77,7 +76,7 @@ function App() {
               currentNoteId &&
               notes.length > 0 &&
               <Editor 
-                currentNote={findCurrentNote()}
+                currentNote={currentNote}
                 updateNote={updateNote}
               />
             }
