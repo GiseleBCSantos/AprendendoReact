@@ -3,21 +3,34 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Die from './components/Die'
+import {nanoid} from 'nanoid'
 
 function App() {
 
   const [dice, setDice] = useState(allNewDice())
 
+
   function allNewDice(){
     let diesArray = []
     for (let i=0; i<10; i++){
-      diesArray.push(Math.ceil(Math.random() * 6))
+      diesArray.push({
+        id: nanoid(),
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false
+      })
     }
 
     return diesArray
   }
 
-  const dices = dice.map(value => <Die value={value} />)
+  const dices = dice.map(die => <Die 
+                                  value={die.value} 
+                                  key={die.id}
+                                />)
+
+  function rollDice(){
+    setDice(allNewDice())
+  }
 
   return (
     <main>
@@ -25,7 +38,7 @@ function App() {
         {dices}
       </div>
 
-      <button className='newRoll' onClick={() => setDice(allNewDice())}>Roll</button>
+      <button className='newRoll' onClick={rollDice}>Roll</button>
     </main>
   )
 }
