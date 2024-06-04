@@ -8,12 +8,23 @@ main{
   align-items: center;
   justify-content: space-around;
   font-size: 1.2rem;
+  padding: 10px;
 }
 
 .dies{
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
   gap: 20px;
+}
+
+@media only screen and (max-width: 850px) {
+  .dies{
+    grid-template: auto auto / repeat(4, 1fr);
+  }
+  main{
+    width: 80vw;
+    min-width: 350px;
+  }
 }
 
 .die{
