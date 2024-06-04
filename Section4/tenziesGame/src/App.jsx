@@ -10,6 +10,8 @@ function App() {
 
   const [dice, setDice] = useState(allNewDice())
   const [tenzies, setTenzies] = useState(false)
+  const [numberOfRolls, setNumberOfRolls] = useState(0)
+  const [startTime, setStartTime] = useState(new Date())
 
 
   useEffect(() => {
@@ -21,6 +23,25 @@ function App() {
       setTenzies(true)
     }
   }, [dice])
+
+  useEffect(() => {
+    if (tenzies){
+      const elapsedTime = new Date() - startTime
+      const currentTime = Math.floor(elapsedTime/1000)
+      // localStorage.setItem('bestTime', Math.floor(elapsedTime/1000))
+      console.log(Math.floor(elapsedTime/1000))
+
+      setStartTime(new Date())
+
+      const bestScore = localStorage.getItem('bestScore')
+      const bestTime = localStorage.getItem('bestTime')
+
+      bestScore ? numberOfRolls < bestScore && localStorage.setItem('bestScore', numberOfRolls) : localStorage.setItem('bestScore', numberOfRolls)
+
+      bestTime ? currentTime < bestTime && localStorage.setItem('bestTime', currentTime) : localStorage.setItem('bestTime', currentTime)
+
+    }
+  }, [tenzies])
 
   function newDie(){
     return {
@@ -53,12 +74,21 @@ function App() {
 
   
   function rollDice(){
-    setDice(prevDice => prevDice.map(die => (
-      die.isHeld ?
-      die
-      :
-      newDie()
-    )))
+    if (!tenzies){
+      setDice(prevDice => prevDice.map(die => (
+        die.isHeld ?
+        die
+        :
+        newDie()
+      )))
+      setNumberOfRolls(prevState => prevState+1)
+    }
+    else{
+      setDice(allNewDice())
+      setTenzies(false)
+      
+      setNumberOfRolls(0)
+    }
   }
 
   const dices = dice.map(die => <Die 
@@ -78,6 +108,12 @@ function App() {
       </div>
 
       <button className='newRoll' onClick={rollDice}>{tenzies ? 'New Game' : 'Roll'}</button>
+
+      <div className="scores">
+        <p>Score: {numberOfRolls}</p>
+        <p>Best Score: {localStorage.getItem('bestScore') ? localStorage.getItem('bestScore') : 0}</p>
+        <p>Best Time: {localStorage.getItem('bestTime') ? localStorage.getItem('bestTime') : 0} sec</p>
+      </div>
     </main>
   )
 }
