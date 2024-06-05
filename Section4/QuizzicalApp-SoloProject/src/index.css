@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  background: #F5F7FB;
+  background-image: url('./assets/blobs.png'), url('./assets/blobs2.png');
+  background-repeat: no-repeat;
+  background-position: right top, bottom left;
+  font-family: Karla, sans-serif;
+  color: #293264;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
