@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Question from './Question'
 
 const Questions = (props) => {
 
+  const [isChecked, setIsChecked] = useState(false)
+
   const dataContainer = props.data.map(item => (
-    <Question item={item} key={props.data.indexOf(item)}/>
+    <Question 
+      item={item} 
+      key={item.id} 
+    />
   ))
+
+  function handleClick(e){
+    e.preventDefault()
+    setIsChecked(true)
+  }
+
+
   return (
-    <div className='questions'>
+    <div className='questions' id='questions'>
       {dataContainer}
+      <button onClick={handleClick}>Check answers</button>
     </div>
   )
 }

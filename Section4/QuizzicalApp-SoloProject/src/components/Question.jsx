@@ -1,6 +1,6 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
-
+import he from 'he';
 function Question(props) {
 
     const incorrectAnswers = props.item.incorrect_answers
@@ -17,19 +17,18 @@ function Question(props) {
 
     answersArray.splice(randomPosition, 0, { id: nanoid(), answer: correctAnswer })
 
-    console.log(answersArray)
     const liItems = answersArray.map(answer => (
         <li key={answer.id}>
-            <label>
-                <input type="radio" name='amount' />
-                {answer.answer}
+            <input type="radio" name={`answer_${props.item.id}`} id={`answer_${answer.id}`}/>
+            <label htmlFor={`answer_${answer.id}`}>
+                {he.decode(answer.answer)}
             </label>
         </li>
     ))
 
     return (
         <div className='question'>
-            <h2>{props.item.question}</h2>
+            <h2>{he.decode(props.item.question)}</h2>
             <ul className='answers'>
                 {liItems}
             </ul>

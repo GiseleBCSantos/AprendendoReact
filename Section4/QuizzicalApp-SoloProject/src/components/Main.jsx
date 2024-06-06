@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Main() {
+function Main(props) {
+
+  const questions = document.getElementById('questions')
+
+
+
+
   return (
-    <div className='main'>
+    <div className='main' id='main'>
       <h1>Quizzical</h1>
       <p>Some description if needed</p>
-      <button>Start quiz</button>
+      <button onClick={props.handleClick}>Start quiz</button>
     </div>
   )
 }
