@@ -7,6 +7,7 @@ import Questions from './components/Questions'
 import Answers from './components/Answers'
 import axios from 'axios'
 import { nanoid } from 'nanoid'
+import Question from './components/Question'
 
 function App() {
 
@@ -14,33 +15,33 @@ function App() {
   const [apiData, setApiData] = useState([])
 
   useEffect(() => {
-    axios.get(`https://opentdb.com/api.php?amount=5&type=multiple`)
-      .then(res => {
-        setApiData(res.data.results);
+    async function fetchData() {
+      await axios.get(`https://opentdb.com/api.php?amount=5&type=multiple`)
+        .then(res => {
+          const data = res.data.results
 
-        setApiData(prevState => prevState.map(item => ({
-          id: nanoid(),
-          ...item
-        })))
+          setApiData(data.map(item => ({
+            id: nanoid(),
+            ...item
+          })))
+        })
+        .catch(() => {
+        })
+        }
+      fetchData()
+  }, [currentPage])
 
-      })
-      .catch(() => {
-      })
-  }, [])
 
-  
-  function handleClick(){
+  function handleClick() {
     setCurrentPage('questions')
-    document.getElementById('main').style.display = 'none'
-    document.getElementById('questions').style.display = 'flex'
   }
-
-
 
   return (
     <>
-      <Main handleClick={handleClick}/>
-      <Questions data={apiData} />
+      {currentPage === 'main' ? <Main handleClick={handleClick} /> :
+        <Questions 
+          data={apiData} 
+        />}
     </>
   )
 }

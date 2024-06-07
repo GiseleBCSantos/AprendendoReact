@@ -2,11 +2,6 @@ import React, { useState } from 'react'
 
 function Main(props) {
 
-  const questions = document.getElementById('questions')
-
-
-
-
   return (
     <div className='main' id='main'>
       <h1>Quizzical</h1>

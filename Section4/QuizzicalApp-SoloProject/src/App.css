@@ -40,7 +40,7 @@ button {
 }
 
 .questions{
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 30px;
 }
@@ -105,7 +105,7 @@ button {
     background: #ddd;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 700px) {
     .questions{
         margin: 50px auto;
     }
