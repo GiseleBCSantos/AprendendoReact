@@ -46,7 +46,7 @@ button {
 }
 
 .question{
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #DBDEF0;
     padding-bottom: 15px;
     max-width: 80vw;
 }
@@ -91,7 +91,7 @@ button {
 
 
 .answers label{
-    padding: 5px;
+    padding: 10px;
     border: 1px solid var(--answer-border);
     border-radius: 15px;
     cursor: pointer;
@@ -119,4 +119,31 @@ button {
         width: inherit;
         margin: 10px;
     }
+    .answers--show{
+        flex-direction: column;
+    }
+}
+
+.answers--show{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.answers--show .answers--button{
+    margin:20px;
+}
+
+.answers--text{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-blue);
+}
+
+@media screen and (max-width: 1200px) {
+    body{
+        margin: 50px auto
+    };
 }

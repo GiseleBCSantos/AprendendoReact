@@ -5,20 +5,20 @@ import { nanoid } from 'nanoid'
 const Questions = (props) => {
 
   const [isChecked, setIsChecked] = useState(false)
-  const [countCheced, setCountChecked] = useState(0)
+  const [countChecked, setCountChecked] = useState(0)
+
 
   const dataContainer = props.data.map(item => (
-
-      <Question
-        item={item}
-        key={item.id}
-        isChecked={isChecked}
-        setCountIsChecked={setCountChecked}
-        // answers={answersArray}
-        // correctAnswer={correctAnswer}
-      />
-    )
+    <Question
+      item={item}
+      key={item.id}
+      isChecked={isChecked}
+      countChecked={countChecked}
+      setCountChecked={setCountChecked}
+    />
   )
+  )
+
 
   function handleClick(e) {
     e.stopPropagation()
@@ -27,10 +27,15 @@ const Questions = (props) => {
 
 
   return (
-    <div className='questions' id='questions'>
-      {dataContainer}
-      <button onClick={handleClick}>Check answers</button>
-    </div>
+    <>
+      <div className='questions' id='questions'>
+        {dataContainer}
+      </div>
+      <div className="answers--show">
+        {isChecked && <p className='answers--text'>You scored {countChecked}/5 correct answers.</p>}
+        <button className={isChecked ? 'answers--button' : ''} onClick={handleClick}>{!isChecked ? 'Check answers' : 'Play again'}</button>
+      </div>
+    </>
   )
 }
 

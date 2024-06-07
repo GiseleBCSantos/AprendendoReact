@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { nanoid } from 'nanoid'
 import he from 'he';
+
 function Question(props) {
 
     const [selectedAnswer, setSelectedAnswer] = useState(null)
@@ -26,8 +27,17 @@ function Question(props) {
         setAnswers(answersArray)
     }, [])
 
+    useEffect(() => {
+        if (selectedAnswer === correctAnswer) {
+            props.setCountChecked(prevState => prevState + 1)
+        }
+
+    }, [props.isChecked])
+
     function handleChange(e) {
         setSelectedAnswer(e.target.value)
+
+
     }
 
 
@@ -39,26 +49,23 @@ function Question(props) {
         background: 'pink'
     }
 
-    function useStyle(answer){
-        if (props.isChecked){
-
-            console.log('1 ', answer === selectedAnswer, ' 2 ', answer !== correctAnswer    )
-
-            if (answer === selectedAnswer){
-                if (answer !== correctAnswer){
+    function useStyle(answer) {
+        if (props.isChecked) {
+            if (answer === selectedAnswer) {
+                if (answer !== correctAnswer) {
                     return style_wrong_answer
                 }
-                }
-                
-                if (answer === correctAnswer){
-                    return style_correct_answer
-                }
-            
-            else{
+            }
+
+            if (answer === correctAnswer) {
+                return style_correct_answer
+            }
+
+            else {
                 return {}
             }
         }
-        else{
+        else {
 
             return {}
         }
@@ -76,7 +83,7 @@ function Question(props) {
                     id={`answer_${answer.id}`}
                     onChange={handleChange}
                     value={answer.answer}
-                    isChecked={answer.answer === selectedAnswer}
+                    checked={answer.answer === selectedAnswer}
                 />
                 <label
                     htmlFor={`answer_${answer.id}`}
