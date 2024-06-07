@@ -4,34 +4,30 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Main from './components/Main'
 import Questions from './components/Questions'
-import Answers from './components/Answers'
 import axios from 'axios'
 import { nanoid } from 'nanoid'
-import Question from './components/Question'
 
 function App() {
 
   const [currentPage, setCurrentPage] = useState('main')
   const [apiData, setApiData] = useState([])
 
-  useEffect(() => {
-      newQuestionsArray()
-  }, [currentPage])
+  console.log(currentPage)
 
-  function newQuestionsArray (){
+  function newQuestionsArray() {
     axios.get(`https://opentdb.com/api.php?amount=5&type=multiple`)
-    .then(res => {
-      const data = res.data.results
+      .then(res => {
+        const data = res.data.results
 
-      setApiData(data.map(item => ({
-        id: nanoid(),
-        ...item
-      })))
+        setApiData(data.map(item => ({
+          id: nanoid(),
+          ...item
+        })))
 
-    })
-    .catch(() => {
+      })
+      .catch(() => {
 
-    })
+      })
   }
 
 
@@ -39,12 +35,15 @@ function App() {
     setCurrentPage('questions')
   }
 
+  newQuestionsArray()
+
   return (
     <>
       {currentPage === 'main' ? <Main handleClick={handleClick} /> :
-        <Questions 
-          data={apiData} 
-          setApiData={newQuestionsArray}
+        <Questions
+          data={apiData}
+          setCurrentPage={setCurrentPage}
+          setNewData={newQuestionsArray}
         />}
     </>
   )

@@ -11,7 +11,6 @@ function Question(props) {
     const correctAnswer = props.item.correct_answer
 
     useEffect(() => {
-
         const randomPosition = Math.floor(Math.random() * 3)
 
         let answersArray = []
@@ -21,28 +20,24 @@ function Question(props) {
                 answer: incorrectAnswers[i]
             })
         }
-
         answersArray.splice(randomPosition, 0, { id: nanoid(), answer: correctAnswer })
-
         setAnswers(answersArray)
     }, [])
 
     useEffect(() => {
-        if (props.isChecked){
+        if (props.isChecked) {
             if (selectedAnswer === correctAnswer) {
                 props.setCountChecked(prevState => prevState + 1)
             }
         }
-        else{
+        else {
             props.setCountChecked(0)
         }
     }, [props.isChecked])
 
-
     function handleChange(e) {
         setSelectedAnswer(e.target.value)
     }
-
 
     const style_correct_answer = {
         background: 'lightgreen',

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Question from './Question'
-import { nanoid } from 'nanoid'
 
 const Questions = (props) => {
 
   const [isChecked, setIsChecked] = useState(false)
   const [countChecked, setCountChecked] = useState(0)
-
 
   const dataContainer = props.data.map(item => (
     <Question
@@ -19,19 +17,15 @@ const Questions = (props) => {
   )
   )
 
+  async function handleClick() {
+    setIsChecked(prevState => !prevState)
 
-
-  function handleClick() {
-    if (!isChecked){
-      setIsChecked(true)
+    if (isChecked){
+      setCountChecked(0)
+      props.setCurrentPage('main')
+      props.setNewData()
     }
-    else{
-      setIsChecked(false)
-      props.setApiData()
-    }
-
   }
-
 
   return (
     <>
