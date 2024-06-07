@@ -15,21 +15,24 @@ function App() {
   const [apiData, setApiData] = useState([])
 
   useEffect(() => {
-    async function fetchData() {
-      await axios.get(`https://opentdb.com/api.php?amount=5&type=multiple`)
-        .then(res => {
-          const data = res.data.results
-
-          setApiData(data.map(item => ({
-            id: nanoid(),
-            ...item
-          })))
-        })
-        .catch(() => {
-        })
-        }
-      fetchData()
+      newQuestionsArray()
   }, [currentPage])
+
+  function newQuestionsArray (){
+    axios.get(`https://opentdb.com/api.php?amount=5&type=multiple`)
+    .then(res => {
+      const data = res.data.results
+
+      setApiData(data.map(item => ({
+        id: nanoid(),
+        ...item
+      })))
+
+    })
+    .catch(() => {
+
+    })
+  }
 
 
   function handleClick() {
@@ -41,6 +44,7 @@ function App() {
       {currentPage === 'main' ? <Main handleClick={handleClick} /> :
         <Questions 
           data={apiData} 
+          setApiData={newQuestionsArray}
         />}
     </>
   )

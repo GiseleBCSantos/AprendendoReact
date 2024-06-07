@@ -142,8 +142,8 @@ button {
     color: var(--text-blue);
 }
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     body{
         margin: 50px auto
     };
-}
+} */

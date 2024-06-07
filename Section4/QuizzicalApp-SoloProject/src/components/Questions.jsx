@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Question from './Question'
 import { nanoid } from 'nanoid'
 
@@ -20,9 +20,16 @@ const Questions = (props) => {
   )
 
 
-  function handleClick(e) {
-    e.stopPropagation()
-    setIsChecked(true)
+
+  function handleClick() {
+    if (!isChecked){
+      setIsChecked(true)
+    }
+    else{
+      setIsChecked(false)
+      props.setApiData()
+    }
+
   }
 
 
@@ -33,7 +40,12 @@ const Questions = (props) => {
       </div>
       <div className="answers--show">
         {isChecked && <p className='answers--text'>You scored {countChecked}/5 correct answers.</p>}
-        <button className={isChecked ? 'answers--button' : ''} onClick={handleClick}>{!isChecked ? 'Check answers' : 'Play again'}</button>
+        <button 
+          className={isChecked ? 'answers--button' : ''} 
+          onClick={handleClick}
+        >
+          {!isChecked ? 'Check answers' : 'Play again'}
+        </button>
       </div>
     </>
   )

@@ -28,25 +28,30 @@ function Question(props) {
     }, [])
 
     useEffect(() => {
-        if (selectedAnswer === correctAnswer) {
-            props.setCountChecked(prevState => prevState + 1)
+        if (props.isChecked){
+            if (selectedAnswer === correctAnswer) {
+                props.setCountChecked(prevState => prevState + 1)
+            }
         }
-
+        else{
+            props.setCountChecked(0)
+        }
     }, [props.isChecked])
+
 
     function handleChange(e) {
         setSelectedAnswer(e.target.value)
-
-
     }
 
 
     const style_correct_answer = {
-        background: 'lightgreen'
+        background: 'lightgreen',
+        border: 'none'
     }
 
     const style_wrong_answer = {
-        background: 'pink'
+        background: 'pink',
+        border: 'none'
     }
 
     function useStyle(answer) {
@@ -66,7 +71,6 @@ function Question(props) {
             }
         }
         else {
-
             return {}
         }
     }
