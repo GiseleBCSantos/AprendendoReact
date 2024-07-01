@@ -7,7 +7,10 @@ function Footer() {
         display: 'flex',
         justifyContent: 'center',
         fontSize: '.9rem',
-        padding: '25px'
+        padding: '25px',
+        bottom: '0',
+        position: 'fixed',
+        width: '100vw'
     }
   return (
     <footer style={styles}>

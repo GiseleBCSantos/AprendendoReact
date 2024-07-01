@@ -2,7 +2,7 @@ import React from 'react'
 
 function Vans() {
   return (
-    <div>Vans</div>
+    <h1>Vans page goes here 🚐</h1>
   )
 }
 

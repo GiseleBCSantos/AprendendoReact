@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Button from './components/Button'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
+import './server'
 
 function App() {
 
