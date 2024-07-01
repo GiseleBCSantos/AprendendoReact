@@ -1,0 +1,43 @@
+.about--main{
+    background: #FFF7ED;
+    /* height: 50vh; */
+}
+
+.about--main .hero{
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* justify-content: space-evenly; */
+}
+
+.about--main .hero--title{
+    font-size: 2rem;
+    line-height: 38px;
+}
+
+.about--main .hero--go-vans{
+    background: #FFCC8D;
+    padding: 30px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (min-width:1000px){
+    .about--main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero--image{
+        width: 50vw;
+    }
+
+    .hero{
+        width: 70vw;
+    }
+}
