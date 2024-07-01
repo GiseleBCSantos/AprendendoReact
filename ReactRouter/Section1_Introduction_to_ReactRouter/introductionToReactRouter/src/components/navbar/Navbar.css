@@ -1,0 +1,41 @@
+.navbar{
+    background: #FFF7ED;
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar a{
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    text-decoration: underline;
+}
+
+.navbar--title{
+    margin-right: auto;
+}
+
+.navbar--title a{
+    color: black;
+    /* font-weight: 900; */
+    font-size: 1.4rem;
+}
+
+.navbar--links{
+    display: flex;
+    gap: 30px;
+}
+
+.navbar--links a{
+    color: #4D4D4D;
+
+}
+
+@media (min-width:1100px){
+    .navbar--links{
+        margin-right: 30px;
+        font-size: 1.2rem;
+    }
+}
