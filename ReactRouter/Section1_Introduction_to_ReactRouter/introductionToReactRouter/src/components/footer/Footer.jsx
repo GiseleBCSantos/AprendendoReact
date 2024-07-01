@@ -9,8 +9,8 @@ function Footer() {
         fontSize: '.9rem',
         padding: '25px',
         bottom: '0',
-        position: 'fixed',
-        width: '100vw'
+        // position: 'fixed',
+        width: '100vw',
     }
   return (
     <footer style={styles}>

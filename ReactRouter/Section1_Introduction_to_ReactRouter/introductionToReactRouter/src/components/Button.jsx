@@ -8,8 +8,9 @@ function Button(props) {
         color: `${props.color}`,
         border: props.border ? props.border : 'none',
         outline: 'none',
-        borderRadius: props.borderRadius ? props.borderRadius : 'none',
-        fontWeight: props.fontWeight && props.fontWeight,
+        borderRadius: props.borderRadius,
+        fontWeight: props.fontWeight,
+        textDecoration: props.textDecoration,
         cursor: 'pointer'
     }
 
@@ -21,7 +22,7 @@ function Button(props) {
 
   return (
     <div className="button-align" style={align_styles}>
-        <button style={styles}>{props.text}</button>
+        <button style={styles} className={`${props.className}`}>{props.text}</button>
     </div>
   )
 }
