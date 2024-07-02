@@ -2,7 +2,7 @@ import React from 'react'
 
 function VanDetail() {
   return (
-    <div></div>
+    <div>Van detail page</div>
   )
 }
 

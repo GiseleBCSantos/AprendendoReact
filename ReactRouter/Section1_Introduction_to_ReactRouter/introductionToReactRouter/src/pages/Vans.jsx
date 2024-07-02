@@ -15,9 +15,9 @@ function Vans() {
   }, [])
 
   const vans = data.map(item => (
-    // <Link to={`/vans/${item.id}`}>
+    <Link to={`/vans/${item.id}`}>
       <Van data={item} key={item.id}/>
-    // </Link>
+    </Link>
   ))
 
   return (

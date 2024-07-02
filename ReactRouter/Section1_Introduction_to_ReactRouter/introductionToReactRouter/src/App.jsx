@@ -5,6 +5,7 @@ import './App.css'
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans from './pages/Vans'
+import VanDetail from './components/van/VanDetail'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Button from './components/Button'
 import Navbar from './components/navbar/Navbar'
@@ -29,6 +30,10 @@ function App() {
           <Route
             path='/vans'
             element={<Vans />}
+          />
+          <Route
+            path='/vans/:id'
+            element={<VanDetail />}
           />
         </Routes>
         <Footer />
