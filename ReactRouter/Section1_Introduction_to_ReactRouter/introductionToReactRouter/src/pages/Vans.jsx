@@ -16,7 +16,10 @@ function Vans() {
 
   const vans = data.map(item => (
     <div className="van" key={item.id}>
-      <Link to={`/vans/${item.id}`}>
+      <Link 
+        to={`/vans/${item.id}`}
+        aria-label={`View details for ${item.name} priced at $${item.price} per day.`}
+      >
         <Van data={item} />
       </Link>
     </div>

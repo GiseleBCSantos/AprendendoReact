@@ -7,7 +7,7 @@ function Van(props) {
   }
   return (
     <div className='van-card'>
-      <img className='van--image' src={props.data.imageUrl} alt="Van image" />
+      <img className='van--image' src={props.data.imageUrl} alt={`Image of ${props.data.name}`} />
       <div className="van--info">
         <p className='van--name'>{props.data.name}</p>
         <p className='van--price'>$ {props.data.price}</p>
