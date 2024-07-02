@@ -11,7 +11,8 @@ function Button(props) {
         borderRadius: props.borderRadius,
         fontWeight: props.fontWeight,
         textDecoration: props.textDecoration,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        margin: props.margin
     }
 
     const align_styles = {
