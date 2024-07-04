@@ -10,6 +10,7 @@ function Navbar() {
                 <Link to='/'><h3>#VANLIFE</h3></Link>
             </div>
             <div className="navbar--links">
+                <Link to={'/host'}><h4>Host</h4></Link>
                 <Link to={'/about'}><h4>About</h4></Link>
                 <Link to={'/vans'}><h4>Vans</h4></Link>
             </div>
