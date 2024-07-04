@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Button from '../components/Button'
+import Button from '../../components/Button'
 import './Vans.css'
-import Van from '../components/van/Van'
+import Van from '../../components/van/Van'
 import { Link } from 'react-router-dom'
 
 function Vans() {
