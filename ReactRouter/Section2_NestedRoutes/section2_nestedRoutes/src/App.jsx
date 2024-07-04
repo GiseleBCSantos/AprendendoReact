@@ -24,38 +24,43 @@ function App() {
       <BrowserRouter>
         <div className="main">
           <Routes>
-            <Route element={<Layout />}>
+            <Route path='/' element={<Layout />}>
               <Route
-                path='/'
+                index
                 element={<Home />}
               />
               <Route
-                path='/about'
+                path='about'
                 element={<About />}
               />
-              <Route
-                path='/vans'
-                element={<Vans />}
-              />
-              <Route
-                path='/vans/:id'
-                element={<VanDetail />}
-              />
+
+              <Route path='vans'>
+
+                <Route
+                  index
+                  element={<Vans />}
+                />
+                <Route
+                  path=':id'
+                  element={<VanDetail />}
+                />
+              </Route>
+
               <Route
                 path='/host'
                 element={<HostLayout />}
               >
 
                 <Route
-                  path='/host'
+                  index
                   element={<Dashboard />}
                 />
                 <Route
-                  path='/host/income'
+                  path='income'
                   element={<Income />}
                 />
                 <Route
-                  path='/host/reviews'
+                  path='reviews'
                   element={<Reviews />}
                 />
 
