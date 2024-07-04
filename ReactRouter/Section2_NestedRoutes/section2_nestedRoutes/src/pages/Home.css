@@ -1,0 +1,20 @@
+.home--main{
+    height: 50vh;
+    background-image: url('../assets/images/image_53.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: white;
+    padding: 25px;
+}
+
+@media (min-width:1000px){
+    .home--main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
