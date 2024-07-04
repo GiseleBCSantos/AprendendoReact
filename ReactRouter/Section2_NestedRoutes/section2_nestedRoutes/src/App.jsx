@@ -15,6 +15,7 @@ import Layout from './components/Layout'
 import Dashboard from './pages/Host/Dashboard'
 import Income from './pages/Host/Income'
 import Reviews from './pages/Host/Reviews'
+import HostLayout from './components/HostLayout'
 
 function App() {
 
@@ -42,9 +43,13 @@ function App() {
               />
               <Route
                 path='/host'
-                element={<Dashboard />}
+                element={<HostLayout />}
               >
 
+                <Route
+                  path='/host'
+                  element={<Dashboard />}
+                />
                 <Route
                   path='/host/income'
                   element={<Income />}
