@@ -3,6 +3,7 @@ import Button from '../../components/Button'
 import './Vans.css'
 import Van from '../../components/van/Van'
 import { Link } from 'react-router-dom'
+import HostLayout from '../../components/HostLayout'
 
 function Vans() {
 
@@ -39,6 +40,7 @@ function Vans() {
       <div className="vansContainer">
         {vans}
       </div>
+      <HostLayout/>
 
     </div>
   )

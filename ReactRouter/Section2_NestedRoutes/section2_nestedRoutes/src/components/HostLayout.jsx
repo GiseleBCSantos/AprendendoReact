@@ -1,13 +1,37 @@
 import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 
 function HostLayout() {
+
+  const active_style = {
+    fontWeight: "bold",
+    textDecoration: "underline",
+    color: "#161616"
+     
+  }
+
   return (
     <>
-      <nav>
-        <Link to={'/host'}>Dashboard</Link>
-        <Link to={'/host/income'}>Income</Link>
-        <Link to={'/host/reviews'}>Reviews</Link>
+      <nav className='host-layout-nav'>
+        <NavLink 
+          to={'/host'}
+          end
+          style={({isActive}) => isActive ? active_style : null}
+        >
+          Dashboard
+        </NavLink>
+        <NavLink 
+          to={'/host/income'}
+          style={({isActive}) => isActive ? active_style : null}
+        >
+          Income
+        </NavLink>
+        <NavLink 
+          to={'/host/reviews'}
+          style={({isActive}) => isActive ? active_style : null}
+        >
+          Reviews
+        </NavLink>
       </nav>
       <Outlet />
     </>

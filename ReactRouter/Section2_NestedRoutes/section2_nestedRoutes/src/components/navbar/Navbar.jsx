@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Navbar.css'
 
 function Navbar() {
@@ -10,9 +10,24 @@ function Navbar() {
                 <Link to='/'><h3>#VANLIFE</h3></Link>
             </div>
             <div className="navbar--links">
-                <Link to={'/host'}><h4>Host</h4></Link>
-                <Link to={'/about'}><h4>About</h4></Link>
-                <Link to={'/vans'}><h4>Vans</h4></Link>
+                <NavLink 
+                  to={'/host'}
+                  className={({isActive}) => isActive ? 'active-link' : null}
+                >
+                  <h4>Host</h4>
+                </NavLink>
+                <NavLink 
+                  to={'/about'}
+                  className={({isActive}) => isActive ? 'active-link' : null}
+                >
+                  <h4>About</h4>
+                </NavLink>
+                <NavLink 
+                  to={'/vans'}
+                  className={({isActive}) => isActive ? 'active-link' : null}
+                >
+                  <h4>Vans</h4>
+                </NavLink>
             </div>
         </div>
     </header>
